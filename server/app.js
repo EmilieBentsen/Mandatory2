@@ -14,7 +14,7 @@ app.use(
     saveUninitialized: true,
     cookie: 
     { 
-      domain: 'localhost',
+      domain: 'https://mandatory2-2022.herokuapp.com',
       secure: false,
       maxAge: 1000 * 60 * 60,
       httpOnly: true,
@@ -33,7 +33,7 @@ app.use(bodyParser.json())
 
 import cors from "cors"
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://mandatory2-2022.herokuapp.com",
     credentials: true,
   }));
 

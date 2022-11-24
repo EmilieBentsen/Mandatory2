@@ -21,13 +21,13 @@
       console.log('Success:', data)
       console.log('LoggedIn ' + data.loggedIn)
       if(data.loggedIn === 'yes'){
-        window.location.href = 'http://localhost:5173/profile'
+        window.location.href = 'https://mandatory2-2022.herokuapp.com/profile'
         notifier.success('Hello! Login succesfull', 7000)
         
       }else{
         notifier.danger('User unknown, maybe you typed invalid email or password', 7000)
 
-        window.location.href = 'http://localhost:5173/login'
+        window.location.href = 'https://mandatory2-2022.herokuapp.com/login'
       }
       })
     .catch((error) => {

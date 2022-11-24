@@ -46,7 +46,7 @@
         //window.location.href = 'http://localhost:5174/signup';
         notifier.danger('You are already in database, try login or forgot password', 7000)
       }else{
-        window.location.href = 'http://localhost:5173/';
+        window.location.href = 'https://mandatory2-2022.herokuapp.com/';
       }
       
     })
