@@ -1,7 +1,7 @@
 {
     "scripts": {
         "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-        "server": "cd server && nodemon app.js",
+        "server": "cd server && node app.js",
         "client": "cd client && npm start"
     },
     "dependencies": {
