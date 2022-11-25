@@ -1,6 +1,6 @@
 <script>
   import { Link } from "svelte-navigator";
-  const copyrightMessage = `© ${new Date().getFullYear()}`;
+  const copyrightMessage = `© ${new Date().getFullYear()}`
 
 </script>
 <footer>

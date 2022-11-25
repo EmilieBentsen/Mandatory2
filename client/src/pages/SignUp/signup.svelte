@@ -1,6 +1,7 @@
 <script>
   import { BASE_URL } from "../../store/globals.js";
   import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
+  import { passwordStrength } from 'check-password-strength'
 
   let passwordValid = false;
 	let email = ''
@@ -8,51 +9,48 @@
   let passwordRepeat = ''
   let n
 
-  function passwordLength(){
-    if(password.length < 8){
-      notifier.info('password length must be at least 8 characthers', 7000)
+  function validateInput() {
+    const validateEmail = email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+    console.log(validateEmail)
+    if(password === passwordRepeat && password.length >= 8 && validateEmail && passwordStrength(password).value === "Strong" ){
+      passwordValid = true
+      signup()
     }
-  }
-
-  function validatePassword() {
-    passwordValid = false;
-    const validateEmail = email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    console.log(validateEmail);
-    if(password === passwordRepeat && password.length >= 8 && validateEmail){
-      passwordValid = true;
-      console.log(passwordValid);
-      signup()}
     if( password !== passwordRepeat){
       notifier.info('Passwords must be identical', 7000)
     }
     if(!validateEmail){
       notifier.info('Invalid email!', 7000)
     }
+    if(passwordStrength(password).value !== "Strong"){
+      notifier.info('Password is too weak, must be at least 8 characters, include Uppercase letters, signs, and numbers', 7000)
+    }
+    else{ 
+    }
   }
-	
+
   async function signup () {
     if(passwordValid){
       fetch(`${$BASE_URL}/api/signup`, {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({useremail: email, userpass: password}),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      if(data.tryAgain){
-        //window.location.href = 'http://localhost:5174/signup';
-        notifier.danger('You are already in database, try login or forgot password', 7000)
-      }else{
-        window.location.href = 'https://mandatory2-2022.herokuapp.com/';
-      }
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({useremail: email, userpass: password}),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.tryAgain){
+          notifier.danger('You are already in database, try login or forgot password', 7000)
+        }else{
+          window.location.href = 'https://mandatory2-2022.herokuapp.com/';
+        }
       
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      });
     }		
 	}
 </script>
@@ -82,7 +80,7 @@
   <p>By creating an account you agree to our <a href="/terms" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
 <div class="center">
-  <button type="submit" class="signupbtn" on:click={passwordLength} on:click={validatePassword}>Sign Up</button>
+  <button type="submit" class="signupbtn" on:click={validateInput}>Sign Up</button>
 </div>
 </div>
 
@@ -164,6 +162,4 @@ button:hover {
      width: 100%;
   }
 }
-
-
 </style>

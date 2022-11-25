@@ -7,18 +7,19 @@
   import { onMount } from "svelte/internal"
   import Signup from "./pages/SignUp/signup.svelte"
   import Terms from "./pages/Terms/terms.svelte"
-  import Footer from "./components/Footer/Footer.svelte";
+  import Footer from "./components/Footer/Footer.svelte"
 
 
   let loggedIn = null;
   async function getAuthStatus() {
-    fetch(`${$BASE_URL}/api/login`, {
+    fetch(`${$BASE_URL}/api/loggedIn`, {
       credentials: 'include',
       method: 'GET',
       headers: {
         accept: 'application/json',
         'Access-Control-Allow-Origin': '*'
-      }} ).then((response) => response.json())
+      }})
+    .then((response) => response.json())
     .then((data) => {
       console.log('Success:', data)
       loggedIn = data.loggedIn
@@ -29,9 +30,8 @@
   }
 
   async function logout () {
-    fetch(`${$BASE_URL}/api/logout`, {
+    fetch(`${$BASE_URL}/api/logout`,{
     method: 'POST',
-    withCredentials: true,
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
@@ -53,11 +53,10 @@
 
 <Router>
   <nav>
-    
-    {#if loggedIn === 'no'}
-    <Link to="/">Home</Link>
-    <Link to="/login">Login</Link>
-    <Link to="/signup">Signup</Link>
+    {#if loggedIn === 'no'} 
+    <Link class="link"to="/">Home</Link>
+    <Link class="link"to="/login">Login</Link>
+    <Link class="link"to="/signup">Signup</Link>
     {/if}
     {#if loggedIn === 'yes'}
     <Link to="/">Home</Link>
@@ -65,16 +64,14 @@
     <Link to="/" on:click={logout}>Loguot</Link>
     {/if}
   </nav> 
-
-  <div>
+   <div>
     <Route path="/"><Home /></Route>
     <Route path="/terms"><Terms/></Route>
     <Route path="/login"><Login /></Route>
     <Route path="/signup"><Signup/></Route>
     {#if loggedIn === 'yes'}
     <Route path="profile"><Profile /></Route>
-    {/if}
-    
+    {/if}   
   </div>
   <Footer/>
 </Router>

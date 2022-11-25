@@ -1,11 +1,9 @@
-import { Router } from "express";
+import { Router } from "express"
 const router = Router();
-import db from "../database/connection_sqlite.js";
+import db from "../database/connection_sqlite.js"
 import bcrypt from "bcryptjs"
-
-import rateLimit from "express-rate-limit";
-
-import { sendEmail } from "../mail_service/send_mail.js";
+import rateLimit from "express-rate-limit"
+import { sendEmail } from "../mail_service/send_mail.js"
 
 
 const generalLimiter = rateLimit({
@@ -22,71 +20,61 @@ const loginLimiter = rateLimit({
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
+router.post("/api/login", loginLimiter, async (req, res) => {
+    const email = req.body.useremail
+    const password = req.body.userpass
 
-router.post("/api/login", async (req, res) => {
-    const email = req.body.useremail;
-    const password = req.body.userpass;
+    const data = await db.all("SELECT * FROM users;")
     
-    const data = await db.all("SELECT * FROM users;");
-    console.log("data:")
-    console.log(data);
-    const result = data.filter(user => user.email === email);
-    console.log("Result: ")
-    console.log(result);
+    const emailMatch = data.filter(user => user.email === email)
 
-
-    if(result.length === 1){
-        const passwordMatch = await bcrypt.compare(password, result[0].password);
-        console.log("passwordmatch " + passwordMatch)
+    if(emailMatch.length === 1){
+        const passwordMatch = await bcrypt.compare(password, emailMatch[0].password)
         if(passwordMatch){
-            console.log("email and password in database")
-            req.session.loggedIn = 'yes';
+            req.session.loggedIn = 'yes'
         }
         else{
-            req.session.loggedIn = 'no';
+            req.session.loggedIn = 'no'
         }
     } else {
-        console.log("email and password not in database")
-        
+        console.log("email and password not in database")        
     }
-    
-    
-    res.send({ loggedIn: req.session.loggedIn });    
+
+    res.send({ loggedIn: req.session.loggedIn })    
     
 });
 
-router.get("/api/login", async (req, res) => {
+router.get("/api/loggedIn", async (req, res) => {
     if(req.session.loggedIn === undefined){
-        req.session.loggedIn = 'no';
+        req.session.loggedIn = 'no'
     }
-    console.log("fromt get api login " + req.session.loggedIn)
-    res.send({ loggedIn: req.session.loggedIn });
+    res.send({ loggedIn: req.session.loggedIn })
 }); 
 
-router.post("/api/logout", async (req, res) => {
- 
+router.post("/api/logout", async (req, res) => { 
     req.session.loggedIn = req.body.loggedIn
-    res.send({ loggedIn: req.session.loggedIn });
+    res.send({ loggedIn: req.session.loggedIn })
 }); 
 
 router.post("/api/signup", async (req, res) => {
-    const email = req.body.useremail;
-    const password = req.body.userpass;
+    const email = req.body.useremail
+    const password = req.body.userpass
     
-    const users = await db.all("SELECT * FROM users;");
-    console.log(users);
-    const result = users.filter(user => user.email === email)
+    const users = await db.all("SELECT * FROM users;")
+
+    const emailMatch = users.filter(user => user.email === email)
+
     let tryAgain = null;
-    if(result.length === 0){
-        console.log("new user added to db")
+
+    if(emailMatch.length === 0){
         const salt = await bcrypt.genSalt(15)
         const newHashedPassword = await bcrypt.hash(password, salt)
         const resultDB = await db.run(`INSERT INTO users (email, password) VALUES (?, ?)`, [email, newHashedPassword]);
-        console.log(resultDB);
+        
         tryAgain = false;
         sendEmail(email, "Thank you for signing up!", "We are so happy that you want to be a part of klimateket!")
     } else {
-        console.log("email and password already in database")
+
         tryAgain = true;
     }
     
@@ -94,7 +82,5 @@ router.post("/api/signup", async (req, res) => {
     res.send({ tryAgain: tryAgain});    
     
 });
-
-
 
 export default router;

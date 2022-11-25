@@ -8,7 +8,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "npm run dev"
-
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.1.0",
@@ -18,6 +17,7 @@
   "dependencies": {
     "@beyonk/svelte-notifications": "^4.2.0",
     "body-parser": "^1.20.1",
+    "check-password-strength": "^2.0.7",
     "concurrently": "^7.6.0",
     "nodemailer": "^6.8.0",
     "routify": "^1.2.7",

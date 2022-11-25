@@ -9,7 +9,6 @@
   async function login () {
     fetch(`${$BASE_URL}/api/login`, {
     method: 'POST', 
-    withCredentials: true,
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
@@ -21,17 +20,17 @@
       console.log('Success:', data)
       console.log('LoggedIn ' + data.loggedIn)
       if(data.loggedIn === 'yes'){
-        window.location.href = 'https://mandatory2-2022.herokuapp.com/profile'
+        window.location.href = 'https://mandatory2-2022.herokuapp.com/'
         notifier.success('Hello! Login succesfull', 7000)
         
       }else{
         notifier.danger('User unknown, maybe you typed invalid email or password', 7000)
 
-        window.location.href = 'https://mandatory2-2022.herokuapp.com/login'
+        window.location.href = 'https://mandatory2-2022.herokuapp.com/'
       }
       })
     .catch((error) => {
-      console.error('Error:', error);
+      console.error('Error:', error)
     });
   
 	}
