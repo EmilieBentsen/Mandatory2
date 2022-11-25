@@ -9,7 +9,7 @@ import session from "express-session"
 app.set("trust proxy", 1)
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: "b06870cc99898d494b0af1837dbe237d",
     resave: false,
     saveUninitialized: true,
     cookie: 
