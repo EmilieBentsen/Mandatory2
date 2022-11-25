@@ -44,7 +44,7 @@
         if(data.tryAgain){
           notifier.danger('You are already in database, try login or forgot password', 7000)
         }else{
-          window.location.href = 'https://mandatory2.herokuapp.com/';
+          window.location.href = 'http://localhost:5175/';
         }
       
       })

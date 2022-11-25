@@ -9,7 +9,7 @@ import session from "express-session"
 app.set("trust proxy", 1)
 app.use(
   session({
-    secret: "b06870cc99898d494b0af1837dbe237d",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: 
@@ -25,14 +25,17 @@ app.use(
 
 app.use(express.json())
 
+import bodyParser from "body-parser"
+app.use(bodyParser.json())
 
 import cors from "cors"
 app.use(cors({
-    origin: "https://mandatory2.herokuapp.com",
+    origin: "http://localhost:5175",
     credentials: true,
   }));
 
 import usersRouter from "./routers/usersRouter.js"
 app.use(usersRouter)
 
-app.listen(process.env.PORT || 8080, () => console.log("Server is running on port"))
+const PORT = 8080 || process.env.PORT
+app.listen(PORT, () => console.log("Server is running on port", PORT))

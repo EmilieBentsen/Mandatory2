@@ -1,6 +1,6 @@
 import { Router } from "express"
 const router = Router();
-//import db from "../database/connection_sqlite.js"
+import db from "../database/connection_sqlite.js"
 import bcrypt from "bcryptjs"
 import rateLimit from "express-rate-limit"
 import { sendEmail } from "../mail_service/send_mail.js"

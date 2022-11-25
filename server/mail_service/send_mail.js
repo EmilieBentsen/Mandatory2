@@ -6,7 +6,7 @@ export function sendEmail(receiver, subject, text){
     service: 'gmail',
     auth: {
       user: 'emilie.bentsen@gmail.com',
-      pass: 'qsigmylftwpjfaif'
+      pass: process.env.MAIL_PASSWORD
     }
   })
       
