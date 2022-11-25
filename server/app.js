@@ -25,8 +25,6 @@ app.use(
 
 app.use(express.json())
 
-import bodyParser from "body-parser"
-app.use(bodyParser.json())
 
 import cors from "cors"
 app.use(cors({
