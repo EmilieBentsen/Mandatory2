@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"heroku-postbuild\"",
+        "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
         "server": "cd server && node app.js",
         "client": "cd client && npm start",
         "heroku-postbuild": "npm run build"
