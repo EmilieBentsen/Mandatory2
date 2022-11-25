@@ -37,5 +37,4 @@ app.use(cors({
 import usersRouter from "./routers/usersRouter.js"
 app.use(usersRouter)
 
-const PORT = 8080 || process.env.PORT
-app.listen(process.env.PORT, () => console.log("Server is running on port"))
+app.listen(process.env.PORT || 8080, () => console.log("Server is running on port"))
