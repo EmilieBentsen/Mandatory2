@@ -30,12 +30,12 @@ app.use(bodyParser.json())
 
 import cors from "cors"
 app.use(cors({
-    origin: "https://mandatory2-2022.herokuapp.com/",
+    origin: "https://mandatory2.herokuapp.com",
     credentials: true,
   }));
 
 import usersRouter from "./routers/usersRouter.js"
 app.use(usersRouter)
 
-const PORT = 8080 || process.env.PORT
-app.listen(PORT, () => console.log("Server is running on port", PORT))
+//const PORT = 8080 || process.env.PORT
+app.listen(process.env.PORT, () => console.log("Server is running on port", PORT))
