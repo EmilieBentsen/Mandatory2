@@ -17,13 +17,13 @@
       signup()
     }
     if( password !== passwordRepeat){
-      notifier.info('Passwords must be identical', 7000)
+      notifier.info('Passwords skal være identiske', 7000)
     }
     if(!validateEmail){
-      notifier.info('Invalid email!', 7000)
+      notifier.info('Ugyldig email, prøv igen!', 7000)
     }
     if(passwordStrength(password).value !== "Strong"){
-      notifier.info('Password is too weak, must be at least 8 characters, include Uppercase letters, signs, and numbers', 7000)
+      notifier.info('Password er for svagt, det skal være mindst 8 karakterer, indeholde store bogstaver, tegn og tal', 7000)
     }
     else{ 
     }
@@ -42,9 +42,9 @@
       .then((response) => response.json())
       .then((data) => {
         if(data.tryAgain){
-          notifier.danger('You are already in database, try login or forgot password', 7000)
+          notifier.danger('Du har allerede en profil, prøv at logge ind eller "glemt kodeord" ', 7000)
         }else{
-          window.location.href = 'http://localhost:5175/';
+          window.location.href = 'http://localhost:5173/';
         }
       
       })
@@ -59,34 +59,35 @@
 <body>
 
  <div class="container">
-  <h1>Sign Up</h1>
-  <p>Please fill in this form to create an account.</p>
-  <hr>
+  <h2>Bliv en del af Klimateket</h2>
+  <p>Udfyld denne formular og opret en profil på Klimateket</p>
 
   <label for="email"><b>Email</b></label>
-  <input bind:value={email} type="text" placeholder="Enter Email" name="email" required>
+  <input bind:value={email} type="text" placeholder="Indtast email" name="email" required>
 
   <label for="psw"><b>Password</b></label>
   <input bind:value={password}
-   type="password" placeholder="Enter Password" name="psw" required>
+   type="password" placeholder="Indtast password" name="psw" required>
 
   <label for="psw-repeat"><b>Repeat Password</b></label>
-  <input bind:value={passwordRepeat} type="password" placeholder="Repeat Password" name="psw-repeat" required>
+  <input bind:value={passwordRepeat} type="password" placeholder="Gentag password" name="psw-repeat" required>
   
   <label>
-  <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+  <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Husk mig
   </label>
   
-  <p>By creating an account you agree to our <a href="/terms" style="color:dodgerblue">Terms & Privacy</a>.</p>
+  <p>Ved at oprette denne profil siger du ja til vores <a class="terms" href="/terms" style="color:dodgerblue">vilkår & privatliv</a>.</p>
 
 <div class="center">
-  <button type="submit" class="signupbtn" on:click={validateInput}>Sign Up</button>
+  <button type="submit" class="signupbtn" on:click={validateInput}>Opret profil</button>
 </div>
 </div>
 
 </body>
 
 <style>
+
+
 
 .center {
   display: flex;
@@ -105,12 +106,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
+  background: #ffffff;
   color: black;
 }
 
 input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
+  background-color: rgb(255, 255, 255);
   outline: none;
   color: black;
 }
@@ -122,7 +123,7 @@ hr {
 
 /* Set a style for all buttons */
 button {
-  background-color: #646cff;
+  background-color: #0d3567;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -146,7 +147,12 @@ button:hover {
 
 /* Add padding to container elements */
 .container {
+  margin-top: -100px;
+  margin-left: 190px;
   padding: 16px;
+  width: 600px;
+  
+  
 }
 
 /* Clear floats */

@@ -23,9 +23,9 @@ const loginLimiter = rateLimit({
 router.post("/api/login", loginLimiter, async (req, res) => {
     const email = req.body.useremail
     const password = req.body.userpass
-
+    console.log('Email: ' + email);
     const data = await db.all("SELECT * FROM users;")
-    
+    console.log('data: ' + data)
     const emailMatch = data.filter(user => user.email === email)
 
     if(emailMatch.length === 1){
@@ -48,6 +48,7 @@ router.get("/api/loggedIn", async (req, res) => {
     if(req.session.loggedIn === undefined){
         req.session.loggedIn = 'no'
     }
+    console.log("test!!")
     res.send({ loggedIn: req.session.loggedIn })
 }); 
 

@@ -4,11 +4,12 @@
 
 </script>
 <footer>
-  <Link to="/terms">Terms & Privacy</Link>
-  <p id="copyright-year">{copyrightMessage} Klimateket</p>
+  <Link class="link" style="padding-right:30px;" to="/terms">Vilkår & privatliv</Link>
+  <p id="copyright-year" style="font-size: 16px;">{copyrightMessage} Klimateket</p>
 </footer>
 
 <style>
+
     footer {
     
     position: fixed;

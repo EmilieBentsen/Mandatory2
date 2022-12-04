@@ -20,13 +20,13 @@
       console.log('Success:', data)
       console.log('LoggedIn ' + data.loggedIn)
       if(data.loggedIn === 'yes'){
-        window.location.href = 'http://localhost:5175/profile'
+        window.location.href = 'http://localhost:5173/profile'
         notifier.success('Hello! Login succesfull', 7000)
         
       }else{
-        notifier.danger('User unknown, maybe you typed invalid email or password', 7000)
+        notifier.danger('Ukendt bruger, måske har du indtastet forkert email eller password', 7000)
 
-        window.location.href = 'http://localhost:5175/login'
+        window.location.href = 'http://localhost:5173/login'
       }
       })
     .catch((error) => {
@@ -39,17 +39,15 @@
 <NotificationDisplay bind:this={n}/>
 
 
-  <div class="imgcontainer">
-    <img src="/earth.png" style="size: 10px" alt="Avatar" class="avatar" />
-  </div>
-  <h4>Login to Klimateket</h4>
+
+  <h2>Log ind hos Klimateket</h2>
   <div class="container">
     <label for="email"><b>Email</b></label>
     <input
       bind:value={email}
       id="email"
       type="email"
-      placeholder="Enter Email"
+      placeholder="Indtast email"
       name="email"
       required
     />
@@ -59,14 +57,14 @@
       bind:value={password}
       id="password"
       type="password"
-      placeholder="Enter Password"
+      placeholder="Indtast password"
       name="psw"
       required
     />
-    <button type="submit" id="loginButton" on:click={login}>Login</button>
-      
+    <button type="submit" id="loginButton" on:click={login}>Log ind</button>
+      <br>
     <label>
-      <input type="checkbox" checked="checked" name="remember" /> Remember me
+      <input type="checkbox" checked="checked" name="remember" /> Husk mig
     </label>
   </div>
 <body></body>
@@ -108,13 +106,13 @@
 
   /* Set a style for all buttons */
   button {
-    background-color: #646cff;
+    background-color: #0d3567;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
   }
 
   /* Add a hover effect for buttons */
@@ -136,7 +134,10 @@
 
   /* Add padding to containers */
   .container {
+    margin-top: px;
+    margin-left: 175px;
     padding: 16px;
+    width: 600px;
   }
 
   /* The "Forgot password" text */

@@ -8,6 +8,8 @@
   import Signup from "./pages/SignUp/signup.svelte"
   import Terms from "./pages/Terms/terms.svelte"
   import Footer from "./components/Footer/Footer.svelte"
+  import Article from "./pages/Article/article.svelte"
+  import Calender from "./pages/Calender/calender.svelte";
 
 
   let loggedIn = null;
@@ -52,16 +54,33 @@
 </script>
 
 <Router>
+  
+
   <nav>
+    
     {#if loggedIn === 'no'} 
-    <Link class="link"to="/">Home</Link>
-    <Link class="link"to="/login">Login</Link>
-    <Link class="link"to="/signup">Signup</Link>
+    <Link class="link"to="/"><img src="favicon3.png" width="45px" align="middle" style="padding-bottom: 20px;padding-right: 5px;"></Link>
+    <Link class="link"to="/login">Log ind</Link>
+    <Link class="link"to="/signup">Opret profil</Link>
+    <Link class="link"to="/">Om Klimateket</Link>
+    <Link class="link"to="/">Kontakt</Link>
+    <Link class="link"to="/">Debat</Link>
+    <Link class="link"to="/article">Artikler</Link>
+    <Link class="link"to="/calender">Kalender</Link>
+
+
+
     {/if}
     {#if loggedIn === 'yes'}
-    <Link to="/">Home</Link>
-    <Link to="/profile">Profile</Link>
-    <Link to="/" on:click={logout}>Loguot</Link>
+    <Link class="link"to="/"><img src="favicon3.png" width="45px" align="middle" style="padding-bottom: 20px;padding-right: 5px;"></Link>
+    <Link to="/" on:click={logout}>Log ud</Link>
+    <Link class="link"to="/">Om Klimateket</Link>
+    <Link class="link"to="/">Kontakt</Link>
+    <Link class="link"to="/">Debat</Link>
+    <Link class="link"to="/article">Artikler</Link>
+    <Link class="link"to="/profile">Profile</Link>
+    <Link class="link"to="/calender">Kalender</Link>
+    
     {/if}
   </nav> 
    <div>
@@ -69,6 +88,10 @@
     <Route path="/terms"><Terms/></Route>
     <Route path="/login"><Login /></Route>
     <Route path="/signup"><Signup/></Route>
+    <Route path="/article"><Article/></Route>
+    <Route path="/calender"><Calender/></Route>
+
+
     {#if loggedIn === 'yes'}
     <Route path="profile"><Profile /></Route>
     {/if}   
