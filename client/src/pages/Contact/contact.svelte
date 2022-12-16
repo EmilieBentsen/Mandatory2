@@ -38,6 +38,7 @@ function setUsername(){
 
 </script>
 <body>
+    <h1>Kontakt klimateket</h1>
     <input bind:value={username} type="text">
 <button on:click={setUsername}>Enter username</button>
 
