@@ -22,6 +22,7 @@
     "nodemailer": "^6.8.0",
     "routify": "^1.2.7",
     "sapper": "^0.29.3",
+    "socket.io-client": "^4.5.4",
     "svelte-materialify": "^0.3.11",
     "svelte-navigator": "^3.2.2",
     "svelte-routing": "^1.6.0",

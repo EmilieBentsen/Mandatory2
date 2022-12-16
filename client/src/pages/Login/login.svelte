@@ -17,8 +17,6 @@
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log('Success:', data)
-      console.log('LoggedIn ' + data.loggedIn)
       if(data.loggedIn === 'yes'){
         window.location.href = 'http://localhost:5173/profile'
         notifier.success('Hello! Login succesfull', 7000)

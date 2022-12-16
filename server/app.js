@@ -1,6 +1,21 @@
 import dotenv from "dotenv/config"
 import express from "express"
+import http from "http"
+import {Server} from "socket.io"
 const app = express()
+
+const server = http.createServer(app)
+const io = new Server(server,   {cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+  }})
+
+io.on("connection", (socket) => {
+
+    socket.on("send text", (data) => {
+      io.emit("update text", data)
+    })
+})
 
 import helmet from "helmet"
 app.use(helmet())
@@ -37,5 +52,7 @@ app.use(cors({
 import usersRouter from "./routers/usersRouter.js"
 app.use(usersRouter)
 
+
+
 const PORT = 8080 || process.env.PORT
-app.listen(PORT, () => console.log("Server is running on port", PORT))
+server.listen(PORT, () => console.log("Server is running on port", PORT))
