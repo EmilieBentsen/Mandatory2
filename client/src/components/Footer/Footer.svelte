@@ -9,9 +9,8 @@
 </footer>
 
 <style>
-
-    footer {
-    
+  
+  footer {
     position: fixed;
     bottom: 0;
     width: 100%;

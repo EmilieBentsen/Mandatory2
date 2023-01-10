@@ -3,14 +3,13 @@
   import { BASE_URL } from "../../store/globals.js"
 	import { onMount } from "svelte/internal"
 
-  const socket = io("http://localhost:8080");
+  const socket = io("http://localhost:8080")
 
   let txt = "";
-  let setUser = false;
 	let email;
 
 	async function getEmail() {
-    fetch(`${$BASE_URL}/api/email`, {
+    fetch(`${$BASE_URL}/api/fetchEmail`, {
       credentials: 'include',
       method: 'GET',
       headers: {
@@ -31,7 +30,7 @@
   socket.on("update text", (data) => {
     const child = document.createElement("a");
     child.innerText = data.data;
-    child.onclick = async function(){ fetch(`${$BASE_URL}/api/receiver`, {
+    child.onclick = async function(){ fetch(`${$BASE_URL}/api/fetchReceiver`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -46,14 +45,13 @@
       .catch((error) => {
         console.error('Error:', error)
       }); }
-    document.getElementById("chat").appendChild(child);
+    document.getElementById("chat").appendChild(child)
   });
 
   function sendText() {
-    socket.emit("send text", { data: email + ": " + txt });
+    socket.emit("send text", { data: email + ": " + txt + " " })
   }
-
-
+  
   onMount(getEmail)
 
 </script>
@@ -73,7 +71,13 @@
 </body>
 
 <style>
-
+  
+  #chat {
+    border: 1px solid black;
+    background-color: white;
+    opacity: 80%;
+  }
+  
   #container {
     margin-bottom: 700px;
     margin-left: 175px;
@@ -81,6 +85,7 @@
     padding: 16px;
     width: 600px;
     background-color: white;
+    opacity: 80%;
   }
   button {
     background-color: #000000;

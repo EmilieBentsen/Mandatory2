@@ -7,7 +7,7 @@
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
   background-image: url("polarbear.png");
-   background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
 
   font-synthesis: none;
@@ -22,12 +22,12 @@
 
 p {
   font-weight: 500;
-  color: #0d3567;
+  color: #000000;
   text-decoration: inherit;
 }
 .link {
   font-weight: 500;
-  color: #0d3567;
+  color: #000000;
   text-decoration: inherit;
   padding-left: 30px;
 }
@@ -76,7 +76,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #0d3567;
+  border-color: #000000;
 }
 button:focus,
 button:focus-visible {
@@ -85,7 +85,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #000000;
     background-color: #ffffff;
   }
   a:hover {

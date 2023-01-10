@@ -1,11 +1,12 @@
 <script>
   	import { BASE_URL } from "../../store/globals.js"
 	  import { onMount } from "svelte/internal"
+
     let message;
     let receiver = "default"; 
 
     async function getReceiver() {
-    fetch(`${$BASE_URL}/api/receiver`, {
+    fetch(`${$BASE_URL}/api/fetchReceiver`, {
       credentials: 'include',
       method: 'GET',
       headers: {
@@ -14,6 +15,7 @@
       }})
     .then((response) => response.json())
     .then((data) => {
+      //use the querystring to get the receiver for the message
       let queryString = window.location.search;
       queryString = decodeURIComponent(queryString)
       let mySubString = queryString.substring(
@@ -37,7 +39,8 @@
       })
       .then((response) => response.json())
       .then((data) => {
-          window.location.href = 'http://localhost:5173/'
+          window.location.href = '/inbox'
+
       })
       .catch((error) => {
         console.error('Error:', error)
@@ -48,8 +51,6 @@
 <body>
     <div id="container">
       <h1>Send besked til {receiver}</h1>
-      
-
       
       <textarea bind:value={message} type="text" rows="20" cols="50" />
       <br>
@@ -78,8 +79,7 @@
       width: 40%;
     }
   
-    input {
-      width: 40%;
+    textarea {
       padding: 12px 20px;
       margin: 8px 0;
       display: inline-block;
@@ -87,6 +87,7 @@
       box-sizing: border-box;
       background-color: white;
       color: black;
+      opacity: 80%;
     }
   </style>
   

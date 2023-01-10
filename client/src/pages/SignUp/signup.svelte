@@ -10,6 +10,7 @@
   let n
 
   function validateInput() {
+    //validate email with regular expression
     const validateEmail = email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
     if(password === passwordRepeat && password.length >= 8 && validateEmail && passwordStrength(password).value === "Strong" ){
       passwordValid = true
@@ -43,7 +44,9 @@
         if(data.tryAgain){
           notifier.danger('Du har allerede en profil, prøv at logge ind eller "glemt kodeord" ', 7000)
         }else{
-          window.location.href = 'http://localhost:5173/';
+          notifier.success('Profilen blev oprettet!', 7000)
+          setTimeout(window.location.href = 'http://localhost:5173/login', 5000)
+          ;
         }
       
       })
@@ -55,9 +58,7 @@
 </script>
 <NotificationDisplay bind:this={n}/>
 
-<body>
-
- <div class="container">
+<div class="container">
   <h2>Bliv en del af Klimateket</h2>
   <p>Udfyld denne formular og opret en profil på Klimateket</p>
 
@@ -81,13 +82,9 @@
   <button type="submit" class="signupbtn" on:click={validateInput}>Opret profil</button>
 </div>
 </div>
-
+<body>
 </body>
-
 <style>
-
-
-
 .center {
   display: flex;
   justify-content: center;
@@ -146,8 +143,8 @@ button:hover {
 
 /* Add padding to container elements */
 .container {
-  margin-top: -100px;
-  margin-left: 190px;
+
+  margin-left: 120px;
   padding: 16px;
   width: 600px;
   

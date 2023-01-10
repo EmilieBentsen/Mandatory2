@@ -1,14 +1,12 @@
+<div class="sidenav">
+  <a href="/klimakrisen">Klimakrisen</a>
+  <a href="/oekologi">Økologi</a>
+  <a href="/groenteknologi">Grøn teknologi</a>
+  <a href="/natur">Natur</a>
+</div>
 <body>
-
-    <div class="sidenav">
-      <a href="#about">Klimakrisen</a>
-      <a href="#services">Økologi</a>
-      <a href="#clients">Grøn teknologi</a>
-      <a href="#contact">Natur</a>
-    </div>
-    
     <div class="main">
-        <p style="color: red;margin-bottom:-25px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:20px;margin-top:100px;">Kronik</p>
+      <p style="color: red;margin-bottom:-25px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:20px;margin-top:100px;">Kronik</p>
       <h2>COP27 er slut, men nu begynder naturens COP15. Det fortjener lige så megen bevågenhed</h2>
       <h5>Den kommende naturens COP15 skal bane vejen for nødvendig handling på både klima- og naturkrisen. Men det kræver, at både borgere, medier og politikere erkender, at biodiversitetskrisen er mindst lige så vigtig som – og uløseligt forbundet med – klimakrisen</h5>
       <img src="trees.png" width="800px">
@@ -21,14 +19,10 @@
       <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
       <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
       <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    </div>  
-    
+    </div>     
 </body>
-
 <style>
 
-
-   
 body {
   font-family: "Lato", sans-serif;
   
@@ -62,7 +56,7 @@ body {
 }
 
 .main {
-  margin-left: 40px; /* Same width as the sidebar + left position in px */
+  margin-left: 200px; /* Same width as the sidebar + left position in px */
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 80px;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -92,6 +86,4 @@ p {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-
-
 </style>

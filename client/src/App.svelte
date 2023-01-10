@@ -1,22 +1,29 @@
 <script>
   import { Router, Link, Route } from "svelte-navigator"
-  import Home from "./pages/Home/Home.svelte"
-  import Login from "./pages/Login/login.svelte"
-  import Profile from "./pages/Profile/profile.svelte"
+  import Home from "./pages/hjem/Hjem.svelte"
+  import Login from "./pages/login/Login.svelte"
+  import Profile from "./pages/profil/Profil.svelte"
   import { BASE_URL } from "./store/globals.js"
   import { onMount } from "svelte/internal"
-  import Signup from "./pages/SignUp/signup.svelte"
-  import Terms from "./pages/Terms/terms.svelte"
+  import Signup from "./pages/signup/Signup.svelte"
+  import Terms from "./pages/terms/Terms.svelte"
   import Footer from "./components/Footer/Footer.svelte"
-  import Article from "./pages/Article/article.svelte"
-  import Calender from "./pages/Calender/calender.svelte";
-  import Contact from "./pages/Contact/contact.svelte"
-  import Chat from "./pages/Chat/chat.svelte"
-  import Message from "./pages/Message/message.svelte";
-  import Inbox from "./pages/Message/inbox.svelte";
-
+  import Article from "./pages/artikler/Artikel.svelte"
+  import Calender from "./pages/kalender/Kalender.svelte";
+  import Contact from "./pages/kontakt/Kontakt.svelte"
+  import Chat from "./pages/chat/Chat.svelte"
+  import Message from "./pages/besked/Besked.svelte";
+  import Inbox from "./pages/besked/Inbox.svelte";
+  import About from "./pages/om/Om.svelte";
+  import Debate from "./pages/debat/Debat.svelte"
+  import Klimakrisen from "./pages/artikler/articles/Klimakrisen.svelte"
+  import Oekologi from "./pages/artikler/articles/Oekologi.svelte"
+  import Groenteknologi from "./pages/artikler/articles/Groenteknologi.svelte"
+  import Natur from "./pages/artikler/articles/Natur.svelte"
+  import Map from "./pages/kort/Kort.svelte";
 
   let loggedIn = null;
+
   async function getAuthStatus() {
     fetch(`${$BASE_URL}/api/loggedIn`, {
       credentials: 'include',
@@ -58,54 +65,51 @@
 </script>
 
 <Router>
-  
-
   <nav>
-    
     {#if loggedIn === 'no'} 
     <Link class="link"to="/"><img src="favicon3.png" width="45px" align="middle" style="padding-bottom: 20px;padding-right: 5px;"></Link>
     <Link class="link"to="/login">Log ind</Link>
     <Link class="link"to="/signup">Opret profil</Link>
-    <Link class="link"to="/">Om Klimateket</Link>
+    <Link class="link"to="/about">Om Klimateket</Link>
     <Link class="link"to="/contact">Kontakt</Link>
-    <Link class="link"to="/">Debat</Link>
     <Link class="link"to="/article">Artikler</Link>
-    <Link class="link"to="/calender">Kalender</Link>
-
-
-
     {/if}
+
     {#if loggedIn === 'yes'}
     <Link class="link"to="/"><img src="favicon3.png" width="45px" align="middle" style="padding-bottom: 20px;padding-right: 5px;"></Link>
     <Link class="link"to="/" on:click={logout}>Log ud</Link>
-    <Link class="link"to="/">Om Klimateket</Link>
+    <Link class="link"to="/about">Om Klimateket</Link>
     <Link class="link"to="/contact">Kontakt</Link>
-    <Link class="link"to="/">Debat</Link>
+    <Link class="link"to="/debate">Debat</Link>
     <Link class="link"to="/article">Artikler</Link>
-    <Link class="link"to="/profile">Profile</Link>
+    <Link class="link"to="/profile">Profil</Link>
     <Link class="link"to="/chat">Chat</Link>
-    <Link class="link"to="/calender">Kalender</Link>
     <Link class="link"to="/inbox">Beskeder</Link>
-
-    
+    <Link class="link"to="/map">Kort</Link>
     {/if}
-  </nav> 
+  </nav>
+
    <div>
     <Route path="/"><Home /></Route>
     <Route path="/terms"><Terms/></Route>
     <Route path="/login"><Login /></Route>
     <Route path="/signup"><Signup/></Route>
     <Route path="/article"><Article/></Route>
+    <Route path="/klimakrisen"><Klimakrisen/></Route>
+    <Route path="/oekologi"><Oekologi/></Route>
+    <Route path="/groenteknologi"><Groenteknologi/></Route>
+    <Route path="/natur"><Natur/></Route>
     <Route path="/calender"><Calender/></Route>
     <Route path="/contact"><Contact/></Route>
-
-
+    <Route path="/about"><About/></Route>
 
     {#if loggedIn === 'yes'}
     <Route path="profile"><Profile /></Route>
     <Route path="chat"><Chat /></Route>
     <Route path="message"><Message /></Route>
     <Route path="inbox"><Inbox /></Route>
+    <Route path="/debate"><Debate/></Route>
+    <Route path="/map"><Map/></Route>
 
     {/if}   
   </div>
@@ -113,5 +117,4 @@
 </Router>
 
 <style>
-
 </style>

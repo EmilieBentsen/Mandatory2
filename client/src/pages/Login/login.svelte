@@ -8,12 +8,12 @@
   
   async function login () {
     fetch(`${$BASE_URL}/api/login`, {
-    method: 'POST', 
-    credentials: 'include',
-    headers: {
+      method: 'POST', 
+      credentials: 'include',
+      headers: {
       'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({useremail: email, userpass: password}),
+      },
+      body: JSON.stringify({useremail: email, userpass: password}),
     })
     .then((response) => response.json())
     .then((data) => {
@@ -35,9 +35,6 @@
 
 </script>
 <NotificationDisplay bind:this={n}/>
-
-
-
   <h2>Log ind hos Klimateket</h2>
   <div class="container">
     <label for="email"><b>Email</b></label>
@@ -67,28 +64,7 @@
   </div>
 <body></body>
 
-
-  
-
 <style>
-	
-    .validation-hint {
-		color: red;
-		padding: 6px 0;
-	}
-	
-	.field-danger {
-		border-color: red;
-	}
-	
-	.field-success {
-		border-color: green;
-	}
-  /* Bordered form */
-  form {
-    border: 3px solid #f1f1f1;
-  }
-
   /* Full-width inputs */
   input[type="email"],
   input[type="password"] {
@@ -118,38 +94,12 @@
     opacity: 0.8;
   }
 
-  /* Center the avatar image inside this container */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-  }
-
-  /* Avatar image */
-  img.avatar {
-    width: 20%;
-    border-radius: 50%;
-  }
-
   /* Add padding to containers */
   .container {
     margin-top: px;
-    margin-left: 175px;
+    margin-left: 120px;
     padding: 16px;
     width: 600px;
   }
 
-  /* The "Forgot password" text */
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  }
-
-  /* Change styles for span and cancel button on extra small screens */
-  @media screen and (max-width: 300px) {
-    span.psw {
-      display: block;
-      float: none;
-    }
-
-  }
 </style>

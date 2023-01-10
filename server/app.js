@@ -15,6 +15,13 @@ io.on("connection", (socket) => {
     socket.on("send text", (data) => {
       io.emit("update text", data)
     })
+    socket.on("client chooese a new color", (data) => {
+      socket.emit("update the color", data)
+    })
+    socket.on("send ice", (data) => {
+      socket.emit("update the ice", data)
+    })
+  
 })
 
 import helmet from "helmet"
@@ -49,8 +56,17 @@ app.use(cors({
     credentials: true,
   }));
 
-import usersRouter from "./routers/usersRouter.js"
-app.use(usersRouter)
+import brugerRouter from "./routers/brugerRouter.js"
+app.use(brugerRouter)
+
+import debatRouter from "./routers/debatRouter.js"
+app.use(debatRouter)
+
+import beskedRouter from "./routers/beskedRouter.js"
+app.use(beskedRouter)
+
+import emailRouter from "./routers/emailRouter.js"
+app.use(emailRouter)
 
 
 
