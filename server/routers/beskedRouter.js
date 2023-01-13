@@ -12,7 +12,7 @@ router.get("/api/fetchReceiver", async (req, res) => {
 router.post("/api/fetchReceiver", async (req, res) => {
     const email = req.body.useremail
     req.session.receiver = email
-    res.send({ data: ''});    
+    res.send({ data: ''})    
     
 });
 

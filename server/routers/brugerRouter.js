@@ -57,7 +57,7 @@ router.post("/api/logout", async (req, res) => {
 router.post("/api/signup", async (req, res) => {
     const email = req.body.useremail
     const password = req.body.userpass
-    const [users, fields] = await db.query("SELECT * FROM users;");
+    const [users, fields] = await db.query("SELECT * FROM users;")
     const emailMatch = users.filter(user => user.email === email)
 
     let tryAgain = null;
@@ -65,13 +65,13 @@ router.post("/api/signup", async (req, res) => {
     if(emailMatch.length === 0){
         const salt = await bcrypt.genSalt(15)
         const newHashedPassword = await bcrypt.hash(password, salt)
-        const resultDB = await db.query(`INSERT INTO users (email, password) VALUES (?, ?)`, [email, newHashedPassword]);
+        const resultDB = await db.query(`INSERT INTO users (email, password) VALUES (?, ?)`, [email, newHashedPassword])
         tryAgain = false;
         sendEmail(email, "Thank you for signing up!", "We are so happy that you want to be a part of klimateket!")
     } else {
         tryAgain = true;
     }
-    res.send({ tryAgain: tryAgain});    
+    res.send({ tryAgain: tryAgain})    
 });
 
 export default router;
