@@ -19,7 +19,7 @@
     .then((data) => {
       if(data.loggedIn === 'yes'){
         window.location.href = 'http://localhost:5173/profile'
-        notifier.success('Hello! Login succesfull', 7000)
+        notifier.success('Hej! Velkommen til klimateket', 7000)
         
       }else{
         notifier.danger('Ukendt bruger, måske har du indtastet forkert email eller password', 7000)
@@ -97,7 +97,7 @@
   /* Add padding to containers */
   .container {
     margin-top: px;
-    margin-left: 120px;
+    margin-left: 60px;
     padding: 16px;
     width: 600px;
   }

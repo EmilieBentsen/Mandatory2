@@ -47,7 +47,7 @@
 
 </script>
 <h1 >Velkommen {email}</h1>
-<button on:click={() => { notifier.info('Edit your profile info!', 7000) }}>Profil info</button>
+<button on:click={() => { notifier.info('Rediger din profil info!', 7000) }}>Profil info</button>
 <NotificationDisplay bind:this={n}/>
 <br>
 <br>

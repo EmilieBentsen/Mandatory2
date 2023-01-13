@@ -77,15 +77,16 @@
 
     {#if loggedIn === 'yes'}
     <Link class="link"to="/"><img src="favicon3.png" width="45px" align="middle" style="padding-bottom: 20px;padding-right: 5px;"></Link>
-    <Link class="link"to="/" on:click={logout}>Log ud</Link>
     <Link class="link"to="/about">Om Klimateket</Link>
-    <Link class="link"to="/contact">Kontakt</Link>
-    <Link class="link"to="/debate">Debat</Link>
+    <Link class="link"to="/map">Kort</Link>
     <Link class="link"to="/article">Artikler</Link>
-    <Link class="link"to="/profile">Profil</Link>
+    <Link class="link"to="/debate">Debat</Link>
     <Link class="link"to="/chat">Chat</Link>
     <Link class="link"to="/inbox">Beskeder</Link>
-    <Link class="link"to="/map">Kort</Link>
+    <Link class="link"to="/contact">Kontakt</Link>
+    <Link class="link"to="/profile">Profil</Link>
+    <Link class="link"to="/" on:click={logout}>Log ud</Link>
+
     {/if}
   </nav>
 

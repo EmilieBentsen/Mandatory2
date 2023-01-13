@@ -58,8 +58,8 @@
 </script>
 <NotificationDisplay bind:this={n}/>
 
+<h2>Bliv en del af Klimateket</h2>
 <div class="container">
-  <h2>Bliv en del af Klimateket</h2>
   <p>Udfyld denne formular og opret en profil på Klimateket</p>
 
   <label for="email"><b>Email</b></label>
@@ -144,7 +144,7 @@ button:hover {
 /* Add padding to container elements */
 .container {
 
-  margin-left: 120px;
+  margin-left: 78px;
   padding: 16px;
   width: 600px;
   
