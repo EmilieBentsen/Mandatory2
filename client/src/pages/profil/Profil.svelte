@@ -6,7 +6,7 @@
 
   let n
 	let email;
-	async function getEmail() {
+	async function fetchEmail() {
     fetch(`${$BASE_URL}/api/fetchEmail`, {
       credentials: 'include',
       method: 'GET',
@@ -25,25 +25,25 @@
 
   const socket = io("http://localhost:8080")
 
-  socket.on("update the color", (data => {
+  socket.on("set new theme", (data => {
     
     if(data.data === "summer"){
-      document.body.style.backgroundImage = "url('sea.png')";
+      document.body.style.backgroundImage = "url('sea.png')"
     } else{
-      document.body.style.backgroundImage = "url('polarbear.png')";
+      document.body.style.backgroundImage = "url('polarbear.png')"
     }
-    document.body.style.backgroundRepeat = "no-repeat";
-    document.body.style.backgroundAttachment = "fixed";
+    document.body.style.backgroundRepeat = "no-repeat"
+    document.body.style.backgroundAttachment = "fixed"
 
   }))
 
   function sendColorSummer(){
-    socket.emit("client chooese a new color", { data: "summer" })
+    socket.emit("choose new theme", { data: "summer" })
   }
   function sendColorWinter(){
-    socket.emit("client chooese a new color", { data: "winter" })
+    socket.emit("choose new theme", { data: "winter" })
   }
-  onMount(getEmail)
+  onMount(fetchEmail)
 
 </script>
 <h1 >Velkommen {email}</h1>

@@ -1,11 +1,14 @@
 <script>
 import { BASE_URL } from "../../store/globals.js"
 import { onMount } from "svelte/internal"
+import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
+
 
 let posts = [];
-let post;
+let post
+let n
 
-async function getPosts() {
+async function fetchPosts() {
   fetch(`${$BASE_URL}/api/fetchPosts`, {
     credentials: 'include',
     method: 'GET',
@@ -18,18 +21,18 @@ async function getPosts() {
     posts = data.data
     console.log('Success:', data)
     for (let i = 0; i < posts.length; i++) {
-      const div = document.createElement("div");
+      const div = document.createElement("div")
       div.style.border = "1px solid black"
       div.style.backgroundColor = "white"
       div.style.opacity = "80%"
 
-      const child2 = document.createElement("h4");
-      child2.innerText = posts[i].writer + ":";
-      const child = document.createElement("p");
-      child.innerText = posts[i].post;
+      const child2 = document.createElement("h4")
+      child2.innerText = posts[i].writer + ":"
+      const child = document.createElement("p")
+      child.innerText = posts[i].post
       div.appendChild(child2)
       div.appendChild(child)
-      document.getElementById("posts").appendChild(div);
+      document.getElementById("posts").appendChild(div)
     }
   })
   .catch((error) => {
@@ -49,14 +52,16 @@ async function writePost () {
   .then((response) => response.json())
   .then((data) => {
     window.location.href = '/debate'
+    notifier.info('Tak for dit bidrag til debatten', 7000)
   })
   .catch((error) => {
     console.error('Error:', error)
   });
 }
 
-onMount(getPosts)
+onMount(fetchPosts)
 </script>
+<NotificationDisplay bind:this={n}/>
 <h1>Debat</h1>
 <textarea bind:value={post} rows="10" cols="60" style="font-size: 20px;color: black; background-color: white"/>
 <br>

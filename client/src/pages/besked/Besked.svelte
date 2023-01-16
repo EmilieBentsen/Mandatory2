@@ -5,7 +5,7 @@
     let message;
     let receiver = "default"; 
 
-    async function getReceiver() {
+    async function fetchReceiver() {
     fetch(`${$BASE_URL}/api/fetchReceiver`, {
       credentials: 'include',
       method: 'GET',
@@ -46,7 +46,7 @@
         console.error('Error:', error)
       });
 	}
-  onMount(getReceiver)
+  onMount(fetchReceiver)
 </script>
 <body>
     <div id="container">

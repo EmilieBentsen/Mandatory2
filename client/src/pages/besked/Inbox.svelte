@@ -3,7 +3,7 @@
 	import { onMount } from "svelte/internal"
 
   let messages = [];
-  async function getMessages() {
+  async function fetchMessages() {
     fetch(`${$BASE_URL}/api/fetchMessages`, {
       credentials: 'include',
       method: 'GET',
@@ -34,7 +34,7 @@
       console.error('Error:', error)
     });
   }
-  onMount(getMessages)
+  onMount(fetchMessages)
 </script>
 <body>
 <div id="container">

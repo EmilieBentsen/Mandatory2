@@ -25,8 +25,8 @@ router.post("/api/sendMessage", async (req, res) => {
     const receiver = req.body.receiver
     const message = req.body.message
     const sender = req.session.email
-    const [users, fields] = await db.query(`SELECT * FROM users WHERE email = '${receiver}';`);
-    const resultDB = await db.query(`INSERT INTO messages (message, sender, userID) VALUES (?, ?, ?)`, [message, sender, users[0].id]);
+    const [users, fields] = await db.query(`SELECT * FROM users WHERE email = '${receiver}';`)
+    const resultDB = await db.query(`INSERT INTO messages (message, sender, userID) VALUES (?, ?, ?)`, [message, sender, users[0].id])
     res.send({data: resultDB})
 })
 

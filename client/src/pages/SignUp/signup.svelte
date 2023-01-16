@@ -3,7 +3,7 @@
   import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
   import { passwordStrength } from 'check-password-strength'
 
-  let passwordValid = false;
+  let passwordValid = false
 	let email = ''
 	let password = ''
   let passwordRepeat = ''

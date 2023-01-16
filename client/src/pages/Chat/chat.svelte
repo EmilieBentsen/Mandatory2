@@ -5,10 +5,10 @@
 
   const socket = io("http://localhost:8080")
 
-  let txt = "";
-	let email;
+  let txt = ""
+	let email
 
-	async function getEmail() {
+	async function fetchEmail() {
     fetch(`${$BASE_URL}/api/fetchEmail`, {
       credentials: 'include',
       method: 'GET',
@@ -28,7 +28,7 @@
 
 
   socket.on("update text", (data) => {
-    const child = document.createElement("a");
+    const child = document.createElement("a")
     child.innerText = data.data;
     child.onclick = async function(){ fetch(`${$BASE_URL}/api/fetchReceiver`, {
         method: 'POST',
@@ -52,7 +52,7 @@
     socket.emit("send text", { data: email + ": " + txt + " " })
   }
   
-  onMount(getEmail)
+  onMount(fetchEmail)
 
 </script>
 

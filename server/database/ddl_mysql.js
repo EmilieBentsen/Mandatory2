@@ -1,18 +1,18 @@
-import db from "./connection_mysql.js";
+import db from "./connection_mysql.js"
 import bcrypt from "bcryptjs"
 
-const isInDeleteMode = true;
+const isInDeleteMode = true
 
 if (isInDeleteMode) {
     db.execute(`
-    DROP TABLE IF EXISTS messages;
+    DROP TABLE IF EXISTS messages
     `);
     db.execute(`
-        DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS users
     `);
 
     db.execute(`
-        DROP TABLE IF EXISTS posts;
+        DROP TABLE IF EXISTS posts
     `);
 
 }
@@ -47,16 +47,16 @@ const newHashedPassword2 = await bcrypt.hash("SaveThePlanet1989&", salt2)
 
 // seed the database
 if (isInDeleteMode) {
-    db.execute(`INSERT INTO users (email, password) VALUES ('klimaline@yahoo.com', '${newHashedPassword1}');`);
-    db.execute(`INSERT INTO users (email, password) VALUES ('anne@grønfremtid.com', '${newHashedPassword2}');`);
+    db.execute(`INSERT INTO users (email, password) VALUES ('klimaline@yahoo.com', '${newHashedPassword1}');`)
+    db.execute(`INSERT INTO users (email, password) VALUES ('anne@grønfremtid.com', '${newHashedPassword2}');`)
 }
 if (isInDeleteMode) {
-    db.execute(`INSERT INTO messages (message, sender, userID) VALUES ('Velkommen til Klimateket, du er altid velkommen til at kontakte os med spørgsmål, ris og ros.', 'klimateket@klima.nu', 1 );`);
-    db.execute(`INSERT INTO messages (message, sender, userID) VALUES ('Velkommen til Klimateket, du er altid velkommen til at kontakte os med spørgsmål, ris og ros.', 'klimateket@klima.nu', 2 );`);
+    db.execute(`INSERT INTO messages (message, sender, userID) VALUES ('Velkommen til Klimateket, du er altid velkommen til at kontakte os med spørgsmål, ris og ros.', 'klimateket@klima.nu', 1 );`)
+    db.execute(`INSERT INTO messages (message, sender, userID) VALUES ('Velkommen til Klimateket, du er altid velkommen til at kontakte os med spørgsmål, ris og ros.', 'klimateket@klima.nu', 2 );`)
 
 }
 if (isInDeleteMode) {
-    db.execute(`INSERT INTO posts (post, writer) VALUES ('Dette er den første post, vi håber der er flere der har lyst til at bidrage til debatten her på siden', 'klimateket@klima.nu');`);
+    db.execute(`INSERT INTO posts (post, writer) VALUES ('Dette er den første post, vi håber der er flere der har lyst til at bidrage til debatten her på siden', 'klimateket@klima.nu');`)
 }
 
-db.end();
+db.end()

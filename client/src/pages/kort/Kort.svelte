@@ -5,10 +5,10 @@
   socket.on("update the ice", (data => {
     console.log(data.data)
     if(data.data === "ice1"){
-      let ice =document.getElementById('ice');
+      let ice =document.getElementById('ice')
       ice.src = "ice2.png"
     } else{
-      let ice =document.getElementById('ice');
+      let ice =document.getElementById('ice')
       ice.src = "ice1.png"
     }
   }))
