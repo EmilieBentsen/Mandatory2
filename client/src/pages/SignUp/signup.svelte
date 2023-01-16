@@ -17,13 +17,13 @@
       signup()
     }
     if( password !== passwordRepeat){
-      notifier.info('Passwords skal være identiske', 7000)
+      notifier.danger('Passwords skal være identiske', 7000)
     }
     if(!validateEmail){
-      notifier.info('Ugyldig email, prøv igen!', 7000)
+      notifier.danger('Ugyldig email, prøv igen!', 7000)
     }
     if(passwordStrength(password).value !== "Strong"){
-      notifier.info('Password er for svagt, det skal være mindst 8 karakterer, indeholde store bogstaver, tegn og tal', 7000)
+      notifier.danger('Password er for svagt, det skal være mindst 10 karakterer, indeholde store bogstaver, tegn og tal', 7000)
     }
     else{ 
     }

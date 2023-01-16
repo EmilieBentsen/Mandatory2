@@ -1,7 +1,9 @@
+import * as dotenv from 'dotenv' 
 import express from "express"
 import http from "http"
 import {Server} from "socket.io"
 
+dotenv.config()
 const app = express()
 
 const server = http.createServer(app)
@@ -12,6 +14,9 @@ const io = new Server(server,   {cors: {
 
 io.on("connection", (socket) => {
 
+    socket.on("send text", (data) => {
+      io.emit("update text", data)
+    })
     socket.on("choose new theme", (data) => {
       socket.emit("set new theme", data)
     })

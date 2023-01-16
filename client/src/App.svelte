@@ -79,13 +79,14 @@
     {#if loggedIn === 'yes'}
     <Link class="link"to="/"><Logo/></Link>
     <Link class="link"to="/about">Om Klimateket</Link>
-    <Link class="link"to="/map">Kort</Link>
-    <Link class="link"to="/article">Artikler</Link>
+    <Link class="link"to="/contact">Kontakt</Link>
     <Link class="link"to="/debate">Debat</Link>
     <Link class="link"to="/chat">Chat</Link>
     <Link class="link"to="/inbox">Beskeder</Link>
-    <Link class="link"to="/contact">Kontakt</Link>
     <Link class="link"to="/profile">Profil</Link>
+    <Link class="link"to="/map">Kort</Link>
+    <Link class="link"to="/calender">Kalender</Link>
+    <Link class="link"to="/article">Artikler</Link>
     <Link class="link"to="/" on:click={logout}>Log ud</Link>
 
     {/if}

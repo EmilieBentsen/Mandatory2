@@ -1,5 +1,5 @@
 <script>
-import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
+import { NotificationDisplay } from '@beyonk/svelte-notifications'
 
 let n
 
